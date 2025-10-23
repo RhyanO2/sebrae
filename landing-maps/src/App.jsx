@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-blue-100">
+    <div>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

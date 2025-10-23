@@ -11,8 +11,6 @@
 }
 
 body {
-  
-  background: linear-gradient(to bottom, #fcfffc, #F3EFF5);
   color: #333;
   min-height: 100vh;
 }
@@ -51,12 +49,12 @@ nav a {
   color: #FCFFFC;
   font-weight: 500;
   padding: 0.5rem 0.9rem;
-  border-radius: 6px;
+  border-radius: 10px;
   transition: all 0.3s ease;
 }
 
 nav a:hover {
-  background: #dbeafe;
+  background: #053a0d;
 }
 
 nav a.active {
@@ -70,7 +68,7 @@ nav a.active {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2.5rem 1rem;
+  background: '#fff' !important; 
 }
 
 .home h2 {
