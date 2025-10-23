@@ -1,0 +1,340 @@
+/* === RESET === */
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+* {
+  font-family: Arimo, Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  
+  background: linear-gradient(to bottom, #fcfffc, #F3EFF5);
+  color: #333;
+  min-height: 100vh;
+}
+
+/* === HEADER === */
+header {
+  background: #248232;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  color: #FCFFFC;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+nav div {
+  display: flex;
+  gap: 0.75rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #FCFFFC;
+  font-weight: 500;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background: #dbeafe;
+}
+
+nav a.active {
+  background: #2563eb;
+  color: rgb(255, 255, 255);
+}
+
+/* === HOME PAGE === */
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.home h2 {
+  font-size: 2rem;
+  color: #040F0F;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.home p {
+  max-width: 600px;
+  color: #000000;
+  margin-bottom: 2rem;
+}
+
+.map-container {
+  width: 90%;
+  max-width: 800px;
+  height: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid #2ba84a54;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+/* === SOBRE NÓS === */
+.sobre {
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.sobre h2 {
+  font-size: 2rem;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+}
+
+.sobre p {
+  max-width: 750px;
+  margin: 0 auto;
+  line-height: 1.7;
+  color: #444;
+  font-size: 1.05rem;
+}
+
+/* === LOGIN === */
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+
+.login h2 {
+  font-size: 2rem;
+  color: #1e3a8a;
+  margin-bottom: 1.5rem;
+}
+
+.login form {
+  background: white;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login input {
+  padding: 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.login input:focus {
+  border-color: #2563eb;
+}
+
+.login button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.login button:hover {
+  background: #1d4ed8;
+}
+
+.login p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #444;
+  text-align: center;
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .home h2,
+  .sobre h2,
+  .login h2 {
+    font-size: 1.6rem;
+  }
+
+  .map-container {
+    height: 300px;
+  }
+
+  .login form {
+    padding: 1.5rem;
+  }
+
+  /* === MODAL === */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.25s ease;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  animation: scaleIn 0.25s ease;
+}
+
+.modal-content h3 {
+  color: #1e3a8a;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.modal-content p {
+  margin: 0.4rem 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: #000;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+
+
+}
+
+.home-container {
+  text-align: center;
+  color: #222;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.map-box {
+  width: 100%;
+  height: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  margin: 20px 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: scaleIn 0.3s ease;
+  text-align: left;
+  position: relative;
+}
+
+.card p	{
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #444;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+}
