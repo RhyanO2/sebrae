@@ -1,11 +1,14 @@
 .ecopurriff-section {
   width: 100%;
+  margin: 0;
   background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
-  padding: 4rem 0;
+  padding: 3rem 0;
   border-bottom: 3px solid #248232;
+
+  
 }
 
-.ecopurriff-section .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.ecopurriff-section .container { max-width: 1200px; margin: 0 auto; padding:  2rem; }
 
 .ecopurriff-section h2 {
   text-align: center; color: #248232; font-size: 2.4rem; margin-bottom: .6rem; font-weight: 900;
