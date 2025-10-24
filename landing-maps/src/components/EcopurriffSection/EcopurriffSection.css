@@ -3,7 +3,7 @@
   margin: 0;
   background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
   padding: 3rem 0;
-  border-bottom: 3px solid #248232;
+  border-bottom: 3px linear-gradient(90deg, #248232, #1a4d2e);
 
   
 }
