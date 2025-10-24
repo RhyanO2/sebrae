@@ -2,7 +2,7 @@ import "./ProjectSection.css";
 
 export default function ProjectSection() {
   return (
-    <div className="info">
+    <div className="info" id="video">
       <div className="container">
         <h2>📐 Projeto</h2>
         <p>
@@ -15,16 +15,22 @@ export default function ProjectSection() {
             <div className="card">
               <h3>💡 Problemática</h3>
               <p>
-                A principal motivação deste projeto é a emissão de gases poluentes provenientes do lixo eletrônico. Em 2024, de acordo com o relatório State of Global Air, 8,1 milhões de pessoas morreram devido à exposição a gases tóxicos, representando um aumento de 1,1 bilhão em relação ao ano anterior.
+                A principal motivação deste projeto é a emissão de gases
+                poluentes provenientes do lixo eletrônico. Em 2024, de acordo
+                com o relatório State of Global Air, 8,1 milhões de pessoas
+                morreram devido à exposição a gases tóxicos, representando um
+                aumento de 1,1 bilhão em relação ao ano anterior.
               </p>
             </div>
             <div className="card">
               <h3>🧠 Ideação</h3>
               <p>
-                 Combinar a capacidade de adsorção do biocarvão com a retenção de ar proporcionada por placas metálicas recicláveis, criando uma barreira eficaz contra a propagação de gases nocivos que contribuem para o efeito estufa.
+                Combinar a capacidade de adsorção do biocarvão com a retenção de
+                ar proporcionada por placas metálicas recicláveis, criando uma
+                barreira eficaz contra a propagação de gases nocivos que
+                contribuem para o efeito estufa.
               </p>
             </div>
-           
           </div>
 
           <div className="video-area">

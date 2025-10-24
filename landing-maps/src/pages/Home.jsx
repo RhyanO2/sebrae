@@ -1,10 +1,18 @@
-import { useState } from "react";
-import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
+import { useEffect, useRef, useState } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Tooltip,
+  useMap,
+} from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./Home.css";
 import ProjectSection from "../components/ProjectSection/ProjectSection.jsx";
 import EcopurriffSection from "../components/EcopurriffSection/EcopurriffSection.jsx";
+import Header from "../components/Header/Header.jsx";
+import { FaCrosshairs } from "react-icons/fa";
 
 export default function Home() {
   const markers = [
@@ -21,10 +29,18 @@ export default function Home() {
       email: "centro@ecopurriffmap.com",
       responsavel: "João Silva",
       capacidade: "500 kg/dia",
-      tiposAceitos: ["Computadores", "Celulares", "Tablets", "Impressoras", "Cabos"],
+      tiposAceitos: [
+        "Computadores",
+        "Celulares",
+        "Tablets",
+        "Impressoras",
+        "Cabos",
+      ],
       servicos: ["Desmontagem", "Certificado de Descarte", "Coleta Domiciliar"],
-      descricao: "Ponto de coleta para descarte seguro de lixo eletrônico. Aceita computadores, celulares, tablets e outros dispositivos.",
-      observacoes: "Necessário agendamento para grandes volumes. Certificado de descarte emitido gratuitamente.",
+      descricao:
+        "Ponto de coleta para descarte seguro de lixo eletrônico. Aceita computadores, celulares, tablets e outros dispositivos.",
+      observacoes:
+        "Necessário agendamento para grandes volumes. Certificado de descarte emitido gratuitamente.",
     },
     {
       id: 2,
@@ -38,17 +54,29 @@ export default function Home() {
       email: "derby@ecopurriffmap.com",
       responsavel: "Maria Santos",
       capacidade: "300 kg/dia",
-      tiposAceitos: ["Computadores", "Smartphones", "Baterias", "Placas Eletrônicas"],
-      servicos: ["Desmontagem Técnica", "Separação de Materiais", "Relatório Ambiental"],
-      descricao: "Ponto de coleta especializado em lixo eletrônico com equipe técnica para desmontagem segura.",
-      observacoes: "Especializado em equipamentos industriais. Atendimento técnico especializado.",
+      tiposAceitos: [
+        "Computadores",
+        "Smartphones",
+        "Baterias",
+        "Placas Eletrônicas",
+      ],
+      servicos: [
+        "Desmontagem Técnica",
+        "Separação de Materiais",
+        "Relatório Ambiental",
+      ],
+      descricao:
+        "Ponto de coleta especializado em lixo eletrônico com equipe técnica para desmontagem segura.",
+      observacoes:
+        "Especializado em equipamentos industriais. Atendimento técnico especializado.",
     },
     {
       id: 3,
       pos: [-3.685047549930062, -40.34695330868966],
       tipo: "descarte",
       titulo: "Secretaria da Conservação e Serviços Públicos",
-      endereco: "Vigilância Sanitária - R. Dr. João do Monte - Centro, Sobral - CE",
+      endereco:
+        "Vigilância Sanitária - R. Dr. João do Monte - Centro, Sobral - CE",
       cep: "62010-220",
       horario: "Seg a Dom, 10h às 22h",
       telefone: "(88) 3611-3357",
@@ -56,14 +84,19 @@ export default function Home() {
       responsavel: "Null",
       capacidade: "Null",
       tiposAceitos: ["Celulares", "Tablets", "Fones", "Carregadores", "Pilhas"],
-      servicos: ["Coleta Expressa", "Atendimento ao Cliente", "Educação Ambiental"],
-      descricao: "Ponto de coleta em shopping center para facilitar o descarte de pequenos eletrônicos.",
+      servicos: [
+        "Coleta Expressa",
+        "Atendimento ao Cliente",
+        "Educação Ambiental",
+      ],
+      descricao:
+        "Ponto de coleta em shopping center para facilitar o descarte de pequenos eletrônicos.",
       observacoes: "Null",
     },
     // Locais com Ecopurriff Instalados
     {
       id: 4,
-      pos: [-3.6880, -40.3470],
+      pos: [-3.688, -40.347],
       tipo: "ecopurriff",
       titulo: "Ecopurriff - Aterro Municipal",
       endereco: "Aterro Sanitário Municipal - Zona Rural, Sobral, CE",
@@ -77,12 +110,14 @@ export default function Home() {
       eficiencia: "95% de captura de gases tóxicos",
       sensores: ["CO2", "Metano", "Compostos Orgânicos Voláteis"],
       manutencao: "Quinzenal - Próxima: 30/10/2024",
-      descricao: "Sistema Ecopurriff instalado para captura de gases tóxicos do lixo eletrônico depositado no aterro.",
-      observacoes: "Sistema principal com maior capacidade. Monitoramento remoto 24h.",
+      descricao:
+        "Sistema Ecopurriff instalado para captura de gases tóxicos do lixo eletrônico depositado no aterro.",
+      observacoes:
+        "Sistema principal com maior capacidade. Monitoramento remoto 24h.",
     },
     {
       id: 5,
-      pos: [-3.6840, -40.3530],
+      pos: [-3.684, -40.353],
       tipo: "ecopurriff",
       titulo: "Ecopurriff - Zona Industrial",
       endereco: "Distrito Industrial - Sobral, CE",
@@ -96,12 +131,14 @@ export default function Home() {
       eficiencia: "92% de captura de gases tóxicos",
       sensores: ["NOx", "SOx", "Particulados", "Metais Pesados"],
       manutencao: "Mensal - Próxima: 25/10/2024",
-      descricao: "Barreira Ecopurriff protegendo área industrial contra gases poluentes de resíduos eletrônicos.",
-      observacoes: "Proteção para 15 empresas da zona industrial. Sistema automatizado.",
+      descricao:
+        "Barreira Ecopurriff protegendo área industrial contra gases poluentes de resíduos eletrônicos.",
+      observacoes:
+        "Proteção para 15 empresas da zona industrial. Sistema automatizado.",
     },
     {
       id: 6,
-      pos: [-3.6910, -40.3400],
+      pos: [-3.691, -40.34],
       tipo: "ecopurriff",
       titulo: "Ecopurriff - Campus Universitário",
       endereco: "Universidade Federal do Ceará - Campus Sobral, CE",
@@ -115,86 +152,136 @@ export default function Home() {
       eficiencia: "88% de captura de gases tóxicos",
       sensores: ["CO", "CO2", "Ozônio", "Compostos Aromáticos"],
       manutencao: "Semanal - Próxima: 28/10/2024",
-      descricao: "Projeto piloto do Ecopurriff em parceria com a universidade para pesquisa e desenvolvimento.",
-      observacoes: "Projeto de pesquisa com dados coletados para estudos acadêmicos.",
+      descricao:
+        "Projeto piloto do Ecopurriff em parceria com a universidade para pesquisa e desenvolvimento.",
+      observacoes:
+        "Projeto de pesquisa com dados coletados para estudos acadêmicos.",
     },
   ];
 
   const [localSelecionado, setLocalSelecionado] = useState(null);
 
-  // Função para criar ícone com emoji
-  const createEmojiIcon = (emoji) => {
-    return L.divIcon({
-      html: `<div style="
-        font-size: 30px;
-        text-align: center;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: white;
-        border-radius: 50%;
-        border: 3px solid #333;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      ">${emoji}</div>`,
-      className: 'custom-emoji-icon',
-      iconSize: [40, 40],
-      iconAnchor: [20, 20],
+  // Criador de ícones com “pulse ring” no CSS
+  const createEmojiIcon = (emoji) =>
+    L.divIcon({
+      html: `<div class="custom-emoji-icon">
+        <span class="pulse-ring"></span>
+        <span class="emoji">${emoji}</span>
+      </div>`,
+      className: "custom-emoji-wrapper",
+      iconSize: [44, 44],
+      iconAnchor: [22, 22],
       popupAnchor: [0, -20],
     });
+
+  const descarteIcon = createEmojiIcon("🗑️");
+  const ecopurriffIcon = createEmojiIcon("🌱");
+
+  // Reveal on scroll (sem libs)
+  const revealRef = useRef([]);
+  useEffect(() => {
+    const els = revealRef.current.filter(Boolean);
+    if (!("IntersectionObserver" in window) || els.length === 0) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("reveal--visible");
+        });
+      },
+      { threshold: 0.2 }
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
+  const setRevealRef = (el, index) => {
+    revealRef.current[index] = el;
   };
 
-  // Ícone para pontos de descarte de lixo eletrônico
-  const descarteIcon = createEmojiIcon('🗑️');
+  const getHeaderHeight = () => {
+    const v = getComputedStyle(document.documentElement).getPropertyValue(
+      "--header-h"
+    );
+    return parseFloat(v) || 64; // fallback
+  };
 
-  // Ícone para locais com Ecopurriff
-  const ecopurriffIcon = createEmojiIcon('🌱');
-
+  const scrollWithOffset = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const y =
+      el.getBoundingClientRect().top + window.pageYOffset - getHeaderHeight();
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
 
   return (
     <div className="home">
-      <div className="home-content">
-        <h2>Bem-vindo!</h2>
-        <p>
-          Explore nosso mapa interativo e descubra pontos estratégicos para o descarte 
-          seguro de lixo eletrônico e localizações onde você pode encontrar os dispositivos 
-          Ecopurriff em funcionamento. Clique em um marcador para ver mais detalhes sobre 
-          cada local e contribua para um futuro mais sustentável.
-        </p>
-      </div>
-
-      {/* LEGENDA DO MAPA */}
-      <div style={{ 
-        display: "flex", 
-        justifyContent: "center", 
-        gap: "30px", 
-        marginBottom: "20px",
-        flexWrap: "wrap"
-      }}>
-        <div style={{ 
-          display: "flex", 
-          alignItems: "center", 
-          gap: "8px",
-          backgroundColor: "#ffe6e6",
-          padding: "8px 15px",
-          borderRadius: "20px",
-          border: "2px solid #e74c3c"
-        }}>
-          <span style={{ fontSize: "20px" }}>🗑️</span>
-          <span style={{ color: "#e74c3c", fontWeight: "bold" }}>Pontos de Descarte</span>
+      {/* HERO */}
+      <Header />
+      <div className="header-spacer" aria-hidden />
+      <section className="hero" id="home-top">
+        <div className="hero__bg" aria-hidden />
+        <div className="hero__content">
+          <h1 className="hero__title">
+            Ecopurriff<span className="hero__spark">.</span>
+          </h1>
+          <p className="hero__subtitle">
+            Uma barreira sustentável para{" "}
+            <strong>capturar gases tóxicos</strong> do lixo eletrônico e
+            transformar cidades em <strong>ecossistemas mais seguros</strong>.
+          </p>
+          <div className="hero__cta">
+            <a
+              href="#mapa"
+              className="btn btn--primary"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollWithOffset("mapa");
+              }}
+            >
+              Ver mapa
+            </a>
+            <a
+              href="#video"
+              className="btn btn--ghost"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollWithOffset("video");
+              }}
+            >
+              Assistir vídeo
+            </a>
+          </div>
+          <div className="hero__stats">
+            <div className="stat">
+              <span className="stat__num">R$ 1</span>
+              <span className="stat__label">custo/unidade</span>
+            </div>
+            <div className="stat">
+              <span className="stat__num">95%</span>
+              <span className="stat__label">eficiência (piloto)</span>
+            </div>
+            <div className="stat">
+              <span className="stat__num">24h</span>
+              <span className="stat__label">monitoramento</span>
+            </div>
+          </div>
         </div>
-        <div style={{ 
-          display: "flex", 
-          alignItems: "center", 
-          gap: "8px",
-          backgroundColor: "#e6f7e6",
-          padding: "8px 15px",
-          borderRadius: "20px",
-          border: "2px solid #27ae60"
-        }}>
-          <span style={{ fontSize: "20px" }}>🌱</span>
-          <span style={{ color: "#27ae60", fontWeight: "bold" }}>Locais com Ecopurriff</span>
+        <div className="hero__curve" aria-hidden />
+      </section>
+
+      {/* LEGENDA */}
+      <div
+        className="legend reveal"
+        id="mapa"
+        ref={(el) => setRevealRef(el, 0)}
+      >
+        <div className="legend__chip legend__chip--descarte">
+          <span className="legend__emoji">🗑️</span>
+          <span className="legend__text">Pontos de Descarte</span>
+        </div>
+        <div className="legend__chip legend__chip--eco">
+          <span className="legend__emoji">🌱</span>
+          <span className="legend__text">Locais com Ecopurriff</span>
         </div>
       </div>
 
@@ -214,19 +301,21 @@ export default function Home() {
               key={marker.id}
               position={marker.pos}
               icon={marker.tipo === "descarte" ? descarteIcon : ecopurriffIcon}
-              eventHandlers={{
-                click: () => setLocalSelecionado(marker),
-              }}
+              eventHandlers={{ click: () => setLocalSelecionado(marker) }}
             >
               <Tooltip direction="top" offset={[0, -10]} opacity={1}>
                 <div>
                   <strong>{marker.titulo}</strong>
                   <br />
-                  <span style={{ 
-                    color: marker.tipo === "descarte" ? "#e74c3c" : "#27ae60",
-                    fontWeight: "bold"
-                  }}>
-                    {marker.tipo === "descarte" ? "🗑️ Descarte" : "🌱 Ecopurriff"}
+                  <span
+                    style={{
+                      color: marker.tipo === "descarte" ? "#e74c3c" : "#27ae60",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {marker.tipo === "descarte"
+                      ? "🗑️ Descarte"
+                      : "🌱 Ecopurriff"}
                   </span>
                   <br />
                   {marker.endereco.split(" - ")[0]}
@@ -234,14 +323,23 @@ export default function Home() {
               </Tooltip>
             </Marker>
           ))}
+          <ResetMapButton center={[-3.687, -40.349]} zoom={14} />
         </MapContainer>
       </div>
 
-      {/* SEÇÃO DE PROJETO */}
-      <ProjectSection />
+      {/* PROJETO */}
+      <section className="reveal" id="video" ref={(el) => setRevealRef(el, 2)}>
+        <ProjectSection />
+      </section>
 
-      {/* SEÇÃO ECOPURRIFF */}
-      <EcopurriffSection />
+      {/* ECOPURRIFF */}
+      <section
+        className="reveal"
+        id="ecopurriff"
+        ref={(el) => setRevealRef(el, 3)}
+      >
+        <EcopurriffSection />
+      </section>
 
       {/* MODAL */}
       {localSelecionado && (
@@ -249,93 +347,140 @@ export default function Home() {
           className="modal-overlay"
           onClick={() => setLocalSelecionado(null)}
         >
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="modal-content glass"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               className="modal-close"
               onClick={() => setLocalSelecionado(null)}
             >
               ✕
             </button>
-            <div style={{ 
-              backgroundColor: localSelecionado.tipo === "descarte" ? "#ffe6e6" : "#e6f7e6",
-              padding: "15px",
-              borderRadius: "12px",
-              marginBottom: "20px",
-              textAlign: "center"
-            }}>
-              <span style={{ 
-                color: localSelecionado.tipo === "descarte" ? "#e74c3c" : "#27ae60",
-                fontWeight: "bold",
-                fontSize: "18px"
-              }}>
-                {localSelecionado.tipo === "descarte" ? "🗑️ PONTO DE DESCARTE" : "🌱 LOCAL COM ECOPURRIFF"}
+
+            <div
+              className={`modal-badge ${
+                localSelecionado.tipo === "descarte"
+                  ? "modal-badge--descarte"
+                  : "modal-badge--eco"
+              }`}
+            >
+              <span>
+                {localSelecionado.tipo === "descarte"
+                  ? "🗑️ PONTO DE DESCARTE"
+                  : "🌱 LOCAL COM ECOPURRIFF"}
               </span>
             </div>
 
-            <h3 style={{ marginBottom: "20px", color: "#2c3e50" }}>📍 {localSelecionado.titulo}</h3>
-            
-            {/* Informações Básicas */}
-            <div style={{ marginBottom: "20px" }}>
-              <h4 style={{ color: "#34495e", borderBottom: "2px solid #ecf0f1", paddingBottom: "5px" }}>📋 Informações Básicas</h4>
-              <p><strong>Endereço:</strong> {localSelecionado.endereco}</p>
-              <p><strong>CEP:</strong> {localSelecionado.cep}</p>
-              <p><strong>Horário:</strong> {localSelecionado.horario}</p>
-              <p><strong>Telefone:</strong> {localSelecionado.telefone}</p>
-              {localSelecionado.email && <p><strong>Email:</strong> {localSelecionado.email}</p>}
-              <p><strong>Responsável:</strong> {localSelecionado.responsavel}</p>
+            <h3 className="modal-title">📍 {localSelecionado.titulo}</h3>
+
+            <div className="modal-section">
+              <h4>📋 Informações Básicas</h4>
+              <p>
+                <strong>Endereço:</strong> {localSelecionado.endereco}
+              </p>
+              <p>
+                <strong>CEP:</strong> {localSelecionado.cep}
+              </p>
+              <p>
+                <strong>Horário:</strong> {localSelecionado.horario}
+              </p>
+              <p>
+                <strong>Telefone:</strong> {localSelecionado.telefone}
+              </p>
+              {localSelecionado.email && (
+                <p>
+                  <strong>Email:</strong> {localSelecionado.email}
+                </p>
+              )}
+              <p>
+                <strong>Responsável:</strong> {localSelecionado.responsavel}
+              </p>
             </div>
 
-            {/* Informações Específicas por Tipo */}
             {localSelecionado.tipo === "descarte" ? (
-              <div style={{ marginBottom: "20px" }}>
-                <h4 style={{ color: "#e74c3c", borderBottom: "2px solid #ffe6e6", paddingBottom: "5px" }}>♻️ Informações de Descarte</h4>
-                <p><strong>Capacidade:</strong> {localSelecionado.capacidade}</p>
-                <div style={{ marginBottom: "10px" }}>
+              <div className="modal-section">
+                <h4 className="accent--descarte">♻️ Informações de Descarte</h4>
+                <p>
+                  <strong>Capacidade:</strong> {localSelecionado.capacidade}
+                </p>
+                <div>
                   <strong>Tipos Aceitos:</strong>
-                  <ul style={{ margin: "5px 0", paddingLeft: "20px" }}>
-                    {localSelecionado.tiposAceitos?.map((tipo, index) => (
-                      <li key={index}>{tipo}</li>
+                  <ul>
+                    {localSelecionado.tiposAceitos?.map((tipo, i) => (
+                      <li key={i}>{tipo}</li>
                     ))}
                   </ul>
                 </div>
-                <div style={{ marginBottom: "10px" }}>
+                <div>
                   <strong>Serviços Oferecidos:</strong>
-                  <ul style={{ margin: "5px 0", paddingLeft: "20px" }}>
-                    {localSelecionado.servicos?.map((servico, index) => (
-                      <li key={index}>{servico}</li>
+                  <ul>
+                    {localSelecionado.servicos?.map((s, i) => (
+                      <li key={i}>{s}</li>
                     ))}
                   </ul>
                 </div>
               </div>
             ) : (
-              <div style={{ marginBottom: "20px" }}>
-                <h4 style={{ color: "#27ae60", borderBottom: "2px solid #e6f7e6", paddingBottom: "5px" }}>🌱 Informações do Ecopurriff</h4>
-                <p><strong>Data de Instalação:</strong> {localSelecionado.dataInstalacao}</p>
-                <p><strong>Capacidade de Filtragem:</strong> {localSelecionado.capacidadeFiltragem}</p>
-                <p><strong>Eficiência:</strong> {localSelecionado.eficiencia}</p>
-                <p><strong>Manutenção:</strong> {localSelecionado.manutencao}</p>
-                <div style={{ marginBottom: "10px" }}>
+              <div className="modal-section">
+                <h4 className="accent--eco">🌱 Informações do Ecopurriff</h4>
+                <p>
+                  <strong>Data de Instalação:</strong>{" "}
+                  {localSelecionado.dataInstalacao}
+                </p>
+                <p>
+                  <strong>Capacidade de Filtragem:</strong>{" "}
+                  {localSelecionado.capacidadeFiltragem}
+                </p>
+                <p>
+                  <strong>Eficiência:</strong> {localSelecionado.eficiencia}
+                </p>
+                <p>
+                  <strong>Manutenção:</strong> {localSelecionado.manutencao}
+                </p>
+                <div>
                   <strong>Sensores Instalados:</strong>
-                  <ul style={{ margin: "5px 0", paddingLeft: "20px" }}>
-                    {localSelecionado.sensores?.map((sensor, index) => (
-                      <li key={index}>{sensor}</li>
+                  <ul>
+                    {localSelecionado.sensores?.map((sensor, i) => (
+                      <li key={i}>{sensor}</li>
                     ))}
                   </ul>
                 </div>
               </div>
             )}
 
-            {/* Descrição e Observações */}
-            <div>
-              <h4 style={{ color: "#34495e", borderBottom: "2px solid #ecf0f1", paddingBottom: "5px" }}>📝 Detalhes</h4>
-              <p><strong>Descrição:</strong> {localSelecionado.descricao}</p>
+            <div className="modal-section">
+              <h4>📝 Detalhes</h4>
+              <p>
+                <strong>Descrição:</strong> {localSelecionado.descricao}
+              </p>
               {localSelecionado.observacoes && (
-                <p><strong>Observações:</strong> {localSelecionado.observacoes}</p>
+                <p>
+                  <strong>Observações:</strong> {localSelecionado.observacoes}
+                </p>
               )}
             </div>
           </div>
         </div>
       )}
+
+      {/* âncora para CTA “Assistir vídeo” */}
+      <div id="video" />
     </div>
+  );
+}
+
+function ResetMapButton({ center, zoom }) {
+  const map = useMap();
+
+  const handleClick = () => {
+    map.setView(center, zoom, { animate: true });
+  };
+
+  return (
+    <button className="reset-map-btn" onClick={handleClick}>
+      <FaCrosshairs className="reset-map-icon" />
+      <span>Centralizar</span>
+    </button>
   );
 }

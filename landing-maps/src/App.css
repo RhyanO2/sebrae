@@ -27,7 +27,7 @@ body {
 
 .map-container {
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   overflow: hidden;
