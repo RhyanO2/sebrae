@@ -12,6 +12,7 @@ import "./Home.css";
 import ProjectSection from "../components/ProjectSection/ProjectSection.jsx";
 import EcopurriffSection from "../components/EcopurriffSection/EcopurriffSection.jsx";
 import Header from "../components/Header/Header.jsx";
+import Footer from "../components/Footer/Footer.jsx";
 import { FaCrosshairs } from "react-icons/fa";
 
 export default function Home() {
@@ -466,6 +467,9 @@ export default function Home() {
 
       {/* âncora para CTA “Assistir vídeo” */}
       <div id="video" />
+
+      {/* FOOTER */}
+      <Footer />
     </div>
   );
 }
