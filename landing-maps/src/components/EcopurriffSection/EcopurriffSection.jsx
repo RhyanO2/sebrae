@@ -4,16 +4,16 @@ export default function EcopurriffSection() {
   return (
     <div className="ecopurriff-section">
       <div className="container">
-        <h2>🌱 Ecopurriff</h2>
+        <h2>🌱 Ecopurify</h2>
         <p className="subtitle">
           Nossa Inovação sustentável para combater a poluição do lixo eletrônico
         </p>
 
         <div className="content-grid">
           <div className="info-card">
-            <h3>🛡️ O que é o Ecopurriff?</h3>
+            <h3>🛡️ O que é o Ecopurify?</h3>
             <p>
-              O Ecopurriff é uma barreira adsorvente inovadora que captura e retém 
+              O Ecopurify é uma barreira adsorvente inovadora que captura e retém 
               gases tóxicos liberados pelo lixo eletrônico, responsável por 70% dos 
               gases poluentes que contribuem para milhões de mortes anuais.
             </p>

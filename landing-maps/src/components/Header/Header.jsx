@@ -72,7 +72,7 @@ export default function Header() {
             aria-label="Início"
           >
             <span className="lp-brand__logo">🌿</span>
-            <span className="lp-brand__text">Ecopurriff</span>
+            <span className="lp-brand__text">Ecopurify</span>
           </button>
 
           {/* Desktop */}
@@ -102,7 +102,7 @@ export default function Header() {
               className="lp-nav__link"
               onClick={() => scrollWithOffset("ecopurriff")}
             >
-              Ecopurriff
+              Ecopurify
             </button>
           </nav>
 
@@ -168,13 +168,13 @@ export default function Header() {
           </button>
           <button
             className="lp-drawer__link"
-            onClick={() => scrollWithOffset("ecopurriff")}
+            onClick={() => scrollWithOffset("Ecopurify")}
           >
-            Ecopurriff
+            Ecopurify
           </button>
         </nav>
         <div className="lp-drawer__footer">
-          <small>© {new Date().getFullYear()} Ecopurriff</small>
+          <small>© {new Date().getFullYear()} Ecopurify</small>
         </div>
       </aside>
     </>

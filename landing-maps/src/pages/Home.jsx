@@ -98,13 +98,13 @@ export default function Home() {
     {
       id: 4,
       pos: [-3.688, -40.347],
-      tipo: "ecopurriff",
-      titulo: "Ecopurriff - Aterro Municipal",
+      tipo: "Ecopurify",
+      titulo: "Ecopurify - Aterro Municipal",
       endereco: "Aterro Sanitário Municipal - Zona Rural, Sobral, CE",
       cep: "62050-000",
       horario: "24h - Monitoramento contínuo",
       telefone: "(88) 3621-4444",
-      email: "aterro@ecopurriffmap.com",
+      email: "aterro@Ecopurifymap.com",
       responsavel: "Dr. Pedro Almeida",
       dataInstalacao: "15/03/2024",
       capacidadeFiltragem: "10.000 m³/h de gases",
@@ -112,20 +112,20 @@ export default function Home() {
       sensores: ["CO2", "Metano", "Compostos Orgânicos Voláteis"],
       manutencao: "Quinzenal - Próxima: 30/10/2024",
       descricao:
-        "Sistema Ecopurriff instalado para captura de gases tóxicos do lixo eletrônico depositado no aterro.",
+        "Sistema Ecopurify instalado para captura de gases tóxicos do lixo eletrônico depositado no aterro.",
       observacoes:
         "Sistema principal com maior capacidade. Monitoramento remoto 24h.",
     },
     {
       id: 5,
       pos: [-3.684, -40.353],
-      tipo: "ecopurriff",
-      titulo: "Ecopurriff - Zona Industrial",
+      tipo: "Ecopurify",
+      titulo: "Ecopurify - Zona Industrial",
       endereco: "Distrito Industrial - Sobral, CE",
       cep: "62030-000",
       horario: "24h - Operação automática",
       telefone: "(88) 3621-5555",
-      email: "industrial@ecopurriffmap.com",
+      email: "industrial@Ecopurifymap.com",
       responsavel: "Eng. Ana Costa",
       dataInstalacao: "22/05/2024",
       capacidadeFiltragem: "7.500 m³/h de gases",
@@ -133,20 +133,20 @@ export default function Home() {
       sensores: ["NOx", "SOx", "Particulados", "Metais Pesados"],
       manutencao: "Mensal - Próxima: 25/10/2024",
       descricao:
-        "Barreira Ecopurriff protegendo área industrial contra gases poluentes de resíduos eletrônicos.",
+        "Barreira Ecopurify protegendo área industrial contra gases poluentes de resíduos eletrônicos.",
       observacoes:
         "Proteção para 15 empresas da zona industrial. Sistema automatizado.",
     },
     {
       id: 6,
       pos: [-3.691, -40.34],
-      tipo: "ecopurriff",
-      titulo: "Ecopurriff - Campus Universitário",
+      tipo: "Ecopurify",
+      titulo: "Ecopurify - Campus Universitário",
       endereco: "Universidade Federal do Ceará - Campus Sobral, CE",
       cep: "62040-370",
       horario: "24h - Projeto piloto",
       telefone: "(88) 3621-6666",
-      email: "campus@ecopurriffmap.com",
+      email: "campus@Ecopurifymap.com",
       responsavel: "Prof. Dr. Roberto Lima",
       dataInstalacao: "10/08/2024",
       capacidadeFiltragem: "3.000 m³/h de gases",
@@ -154,7 +154,7 @@ export default function Home() {
       sensores: ["CO", "CO2", "Ozônio", "Compostos Aromáticos"],
       manutencao: "Semanal - Próxima: 28/10/2024",
       descricao:
-        "Projeto piloto do Ecopurriff em parceria com a universidade para pesquisa e desenvolvimento.",
+        "Projeto piloto do Ecopurify em parceria com a universidade para pesquisa e desenvolvimento.",
       observacoes:
         "Projeto de pesquisa com dados coletados para estudos acadêmicos.",
     },
@@ -223,7 +223,7 @@ export default function Home() {
         <div className="hero__bg" aria-hidden />
         <div className="hero__content">
           <h1 className="hero__title">
-            Ecopurriff<span className="hero__spark">.</span>
+            Ecopurify<span className="hero__spark">.</span>
           </h1>
           <p className="hero__subtitle">
             Uma barreira sustentável para{" "}
@@ -282,7 +282,7 @@ export default function Home() {
         </div>
         <div className="legend__chip legend__chip--eco">
           <span className="legend__emoji">🌱</span>
-          <span className="legend__text">Locais com Ecopurriff</span>
+          <span className="legend__text">Locais com Ecopurify</span>
         </div>
       </div>
 
@@ -424,7 +424,7 @@ export default function Home() {
               </div>
             ) : (
               <div className="modal-section">
-                <h4 className="accent--eco">🌱 Informações do Ecopurriff</h4>
+                <h4 className="accent--eco">🌱 Informações do Ecopurify</h4>
                 <p>
                   <strong>Data de Instalação:</strong>{" "}
                   {localSelecionado.dataInstalacao}
